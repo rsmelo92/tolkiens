@@ -1,20 +1,8 @@
+import getColors from 'get-css-colors'
+
 interface CountCase {
   name: string;
   count: number;
-}
-
-function matchHexOrRgb (color:string, check?: 'hex' | 'rgb') {
-  const isHex = /#[0-9a-f]{3}([0-9a-f]{3})?$/.test(color)
-  if (check === 'hex') {
-    return isHex
-  }
-
-  const isRgb = /rgb/.test(color)
-  if (check === 'rgb') {
-    return isRgb
-  }
-
-  return isHex || isRgb
 }
 
 function countCases (array: Array<string>, name: string) {
@@ -31,17 +19,21 @@ function sortByCount (items:Array<CountCase>) {
 }
 
 function getAllColors (properties) {
-  return [...properties.background, ...properties.fill, ...properties['background-color']]
+  return [
+    ...properties.background,
+    ...properties.fill,
+    ...properties['background-color']
+  ]
 }
 
 function parseColor (properties: { background: Array<string>}) {
   const allColors = getAllColors(properties)
   const uniqueValues = Array.from(new Set(allColors)).sort()
 
-  const uniqueColors = uniqueValues.filter(v => matchHexOrRgb(v))
+  const uniqueColors = uniqueValues.filter(getColors)
 
-  const colors = uniqueColors.map(hex => {
-    return countCases(allColors, hex)
+  const colors = uniqueColors.map(color => {
+    return countCases(allColors, color)
   })
 
   const sortedColors = sortByCount(colors)

@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "cssstats": "^4.0.2",
-    "get-css": "^4.0.3"
+    "get-css": "^4.0.3",
+    "get-css-colors": "^4.0.0"
   }
 }
