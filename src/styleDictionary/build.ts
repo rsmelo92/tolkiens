@@ -1,28 +1,26 @@
 import styleDictionary from 'style-dictionary'
-import fs from 'fs'
 import path from 'path'
+import fs from 'fs'
 
-function buildDictionary (file: object) {
+import { configs } from './config'
+
+function buildDictionary (file: { color: object }) {
+  console.log()
+
   const sourcePath = path.join(__dirname, 'style.json')
   const stringfied = JSON.stringify(file)
+  const fileName = Object.keys(file.color)
+  const platforms = configs(fileName[0])
 
   fs.writeFileSync(sourcePath, stringfied)
 
-  styleDictionary.extend({
+  const styleDictionaryExtended = styleDictionary.extend({
     source: [sourcePath],
-    platforms: {
-      scss: {
-        transformGroup: 'scss',
-        files: [{
-          destination: 'scss/_variables.scss',
-          format: 'scss/variables'
-        }]
-      }
-    }
+    platforms
   })
 
   try {
-    styleDictionary.buildAllPlatforms()
+    styleDictionaryExtended.buildAllPlatforms()
   } catch (error) {
     console.error(error)
   } finally {

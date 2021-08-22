@@ -2,7 +2,7 @@ import getCss from 'get-css'
 import cssstats from 'cssstats'
 
 import { parseColor } from './parsers/color'
-import { buildDictionary } from './styleDictionary'
+import { buildDictionary } from './styleDictionary/build'
 
 const URL_ADDRESS = 'https://www.youtube.com/watch?v=e69LVEnEAug'
 const OP_URL = new URL(URL_ADDRESS)
