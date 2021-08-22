@@ -10,6 +10,7 @@ const OP_URL = new URL(URL_ADDRESS)
 function handleCss (css: string) {
   const stats = cssstats(css)
   const uniqueColors = stats.declarations.getUniquePropertyCount('color')
+
   if (uniqueColors > 0) {
     const baseAndNeutral = parseColor(stats.declarations.properties)
     baseAndNeutral.forEach(buildDictionary)

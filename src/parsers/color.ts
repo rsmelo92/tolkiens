@@ -5,6 +5,14 @@ interface CountCase {
   count: number;
 }
 
+type Colors = Array<CountCase>
+
+interface Properties {
+  background: Array<string>;
+  fill: Array<string>;
+  'background-color': Array<string>;
+}
+
 function testBlackAndWhiteVariations (color: string) {
   const regex = /^#fff$|#ffffff|white|^#000$|#000000|black|(([0-9]?[0-9]?[0-9],))\2+/gmi
   return regex.test(color)
@@ -17,13 +25,13 @@ function countCases (array: Array<string>, name: string) {
   }
 }
 
-function sortByCount (items:Array<CountCase>) {
+function sortByCount (items: Array<CountCase>) {
   return items.sort((a, b) => {
     return b.count - a.count
   })
 }
 
-function getAllColors (properties) {
+function getAllColors (properties: Properties) {
   return [
     ...properties.background,
     ...properties.fill,
@@ -31,7 +39,7 @@ function getAllColors (properties) {
   ]
 }
 
-function unveilBaseTokens (colors) {
+function unveilBaseTokens (colors: Colors) {
   if (colors && colors.length > 0) {
     const primary = colors && colors[0] ? { value: colors[0].name } : {}
     const secondary = colors && colors[1] ? { value: colors[1].name } : {}
@@ -42,7 +50,7 @@ function unveilBaseTokens (colors) {
   }
 }
 
-function unveilNeutralTokens (colors) {
+function unveilNeutralTokens (colors: Colors) {
   if (colors && colors.length > 0) {
     const one = colors && colors[0] ? { value: colors[0].name } : {}
     const two = colors && colors[1] ? { value: colors[1].name } : {}
@@ -64,7 +72,7 @@ function unveilNeutralTokens (colors) {
   }
 }
 
-function parseColor (properties: { background: Array<string>}) {
+function parseColor (properties: Properties) {
   const allColors = getAllColors(properties)
   const uniqueValues = Array.from(new Set(allColors)).sort()
 

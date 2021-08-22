@@ -3,13 +3,13 @@ import fs from 'fs'
 import path from 'path'
 
 function buildDictionary (file: object) {
-  const source = path.join(__dirname, '../../style.json')
-  const stringfiedSource = JSON.stringify(file)
+  const sourcePath = path.join(__dirname, 'style.json')
+  const stringfied = JSON.stringify(file)
 
-  fs.writeFileSync(source, stringfiedSource)
+  fs.writeFileSync(sourcePath, stringfied)
 
   styleDictionary.extend({
-    source: [source],
+    source: [sourcePath],
     platforms: {
       scss: {
         transformGroup: 'scss',
@@ -26,7 +26,7 @@ function buildDictionary (file: object) {
   } catch (error) {
     console.error(error)
   } finally {
-    fs.unlinkSync(source)
+    fs.unlinkSync(sourcePath)
   }
 }
 
