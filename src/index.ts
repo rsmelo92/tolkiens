@@ -2,6 +2,7 @@ import getCss from 'get-css'
 import cssstats from 'cssstats'
 
 import { parseColor } from './parsers/color'
+import { buildDictionary } from './styleDictionary'
 
 const URL_ADDRESS = 'https://www.youtube.com/watch?v=e69LVEnEAug'
 const OP_URL = new URL(URL_ADDRESS)
@@ -10,8 +11,8 @@ function handleCss (css: string) {
   const stats = cssstats(css)
   const uniqueColors = stats.declarations.getUniquePropertyCount('color')
   if (uniqueColors > 0) {
-    console.log(stats.declarations.properties)
-    parseColor(stats.declarations.properties)
+    const baseAndNeutral = parseColor(stats.declarations.properties)
+    baseAndNeutral.forEach(buildDictionary)
   }
 }
 
