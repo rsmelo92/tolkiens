@@ -1,32 +1,16 @@
 import getColors from 'get-css-colors'
+import {
+  testBlackAndWhiteVariations,
+  countCases,
+  sortByCount,
+  getAllColors,
+  unveilBaseTokens,
+  unveilNeutralTokens
+} from './color_utils'
 
-interface CountCase {
-  name: string;
-  count: number;
-}
+import type { Properties } from './color_utils'
 
-function countCases (array: Array<string>, name: string) {
-  return {
-    name,
-    count: array.filter((el) => el === name).length
-  }
-}
-
-function sortByCount (items:Array<CountCase>) {
-  return items.sort((a, b) => {
-    return b.count - a.count
-  })
-}
-
-function getAllColors (properties) {
-  return [
-    ...properties.background,
-    ...properties.fill,
-    ...properties['background-color']
-  ]
-}
-
-function parseColor (properties: { background: Array<string>}) {
+function parseColor (properties: Properties) {
   const allColors = getAllColors(properties)
   const uniqueValues = Array.from(new Set(allColors)).sort()
 
@@ -38,9 +22,25 @@ function parseColor (properties: { background: Array<string>}) {
 
   const sortedColors = sortByCount(colors)
 
-  console.log({ sortedColors })
+  const neutralColors = sortedColors.filter(({ name }) => testBlackAndWhiteVariations(name))
+  const noNeutralColors = sortedColors.filter(({ name }) => !testBlackAndWhiteVariations(name))
 
-  return sortedColors
+  const base = unveilBaseTokens(noNeutralColors)
+  const neutral = unveilNeutralTokens(neutralColors)
+
+  const baseJson = {
+    color: {
+      base
+    }
+  }
+
+  const neutralJson = {
+    color: {
+      neutral
+    }
+  }
+
+  return [baseJson, neutralJson]
 }
 
 export { parseColor }
