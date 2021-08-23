@@ -5,8 +5,6 @@ import fs from 'fs'
 import { configs } from './config'
 
 function buildDictionary (file: { color: object }) {
-  console.log()
-
   const sourcePath = path.join(__dirname, 'style.json')
   const stringfied = JSON.stringify(file)
   const fileName = Object.keys(file.color)
