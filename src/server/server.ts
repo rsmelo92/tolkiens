@@ -1,30 +1,23 @@
-import Fastify, { FastifyInstance } from 'fastify'
+import express from 'express'
 import path from 'path'
-import fs from 'fs'
+
 import { fetchCode } from '../index'
 
-const server: FastifyInstance = Fastify({ logger: true })
+const app = express()
+const port = 3000
 
-server.get('/download', (request, reply) => {
-  reply.headers({
-    'Content-disposition': 'attachment; filename=output.zip',
-    'Content-Type': 'application/zip'
-  })
+app.get('/download', (req, res) => {
   fetchCode('https://www.youtube.com/watch?v=e69LVEnEAug')
     .then(() => {
-      fs.readFile(path.join(__dirname, '../output.zip'), (err, fileBuffer) => {
-        reply.send(err || fileBuffer)
-      })
+      res.sendFile(path.join(__dirname, '../output.zip'))
     })
-    .catch(reply.send)
+    .catch(console.error)
 })
 
-const start = async () => {
-  try {
-    await server.listen(3000)
-  } catch (err) {
-    server.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
