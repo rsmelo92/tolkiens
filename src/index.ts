@@ -17,7 +17,7 @@ function zipFolder () {
   const buildDir = path.join(__dirname, 'build')
   const output = fs.createWriteStream(outputDir)
   const archive = archiver('zip', {
-    zlib: { level: 9 } // Sets the compression level.
+    zlib: { level: 9 }
   })
 
   output.on('close', () => {

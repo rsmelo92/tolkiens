@@ -1,31 +1,22 @@
-import Fastify, { FastifyInstance, RouteShorthandOptions } from 'fastify'
+import Fastify, { FastifyInstance } from 'fastify'
+import path from 'path'
 import fs from 'fs'
 import { fetchCode } from '../index'
 
 const server: FastifyInstance = Fastify({ logger: true })
 
-const opts: RouteShorthandOptions = {
-  schema: {
-    response: {
-      200: {
-        type: 'object',
-        properties: {
-          pong: {
-            type: 'string'
-          }
-        }
-      }
-    }
-  }
-}
-
-server.get('/ping', opts, async (request, reply) => {
-  return { pong: 'it worked!' }
-})
-
-server.get('/download', opts, async (request, reply) => {
-  const fetched = await fetchCode('https://www.youtube.com/watch?v=e69LVEnEAug')
-  return fetched
+server.get('/download', (request, reply) => {
+  reply.headers({
+    'Content-disposition': 'attachment; filename=output.zip',
+    'Content-Type': 'application/zip'
+  })
+  fetchCode('https://www.youtube.com/watch?v=e69LVEnEAug')
+    .then(() => {
+      fs.readFile(path.join(__dirname, '../output.zip'), (err, fileBuffer) => {
+        reply.send(err || fileBuffer)
+      })
+    })
+    .catch(reply.send)
 })
 
 const start = async () => {
