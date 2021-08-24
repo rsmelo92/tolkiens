@@ -9,7 +9,11 @@ type ParseProperties = {
 }
 
 function parseProperties ({ css }: ParseProperties) {
-  const { declarations: { properties } } = cssstats(css)
+  const {
+    declarations: {
+      properties
+    }
+  } = cssstats(css)
 
   // Colors
   parseColor(properties).forEach(buildDictionary)
@@ -23,7 +27,5 @@ async function fetchCode (url: string) {
     console.error(error)
   }
 }
-
-fetchCode('https://github.com/')
 
 export { fetchCode }
