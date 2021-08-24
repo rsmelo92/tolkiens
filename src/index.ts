@@ -8,9 +8,6 @@ type ParseProperties = {
   css: string,
 }
 
-const URL_ADDRESS = 'https://www.youtube.com/watch?v=e69LVEnEAug'
-const OP_URL = new URL(URL_ADDRESS)
-
 function parseProperties ({ css }: ParseProperties) {
   const { declarations: { properties } } = cssstats(css)
 
@@ -18,11 +15,15 @@ function parseProperties ({ css }: ParseProperties) {
   parseColor(properties).forEach(buildDictionary)
 }
 
-function fetchCode (url: string) {
-  const { href } = new URL(url, OP_URL.origin)
-  getCss(href)
-    .then(parseProperties)
-    .catch(console.error)
+async function fetchCode (url: string) {
+  try {
+    const properties = await getCss(url)
+    parseProperties(properties)
+  } catch (error) {
+    console.error(error)
+  }
 }
 
-fetchCode(URL_ADDRESS)
+fetchCode('https://github.com/')
+
+export { fetchCode }
