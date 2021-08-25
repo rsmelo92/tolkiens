@@ -6,7 +6,8 @@
   "repository": "git@github.com:rsmelo92/tolkiens.git",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn clean && yarn workspaces run build"
+    "build": "yarn clean && yarn workspaces run build",
+    "dev": "yarn build && node ./dist/api/server/server.js"
   },
   "author": "Rafael Melo <rsmelo_@hotmail.com>",
   "license": "MIT"
