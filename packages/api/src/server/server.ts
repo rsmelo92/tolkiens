@@ -2,7 +2,9 @@ import express from 'express'
 import AdmZip from 'adm-zip'
 import path from 'path'
 
-type Params = { folder?: string }
+import { fetchCode } from '../tolkiens'
+
+type Params = { tag?: string }
 const PORT = 3000
 
 const app = express()
@@ -14,22 +16,32 @@ app.get('/', (_, res) => {
 })
 
 app.get('/download', (req, res) => {
-  const { folder }: Params = req.params
+  const { tag }: Params = req.query
+  if (tag) {
+    const buff = Buffer.from(tag, 'base64')
+    const url = buff.toString('utf-8')
 
-  if (folder) {
-    const folderPath = path.join(__dirname, '../output')
-    const zip = new AdmZip()
+    fetchCode(url)
+      .then(response => {
+        console.log({ response })
 
-    zip.addLocalFolder(folderPath)
+        const folderPath = path.join(__dirname, '../tolkiens/build')
+        const zip = new AdmZip()
 
-    const downloadName = `${Date.now()}.zip`
-    const data = zip.toBuffer()
-    res.set('Content-Type', 'application/octet-stream')
-    res.set('Content-Disposition', `attachment; filename=${downloadName}`)
-    res.set('Content-Length', data.length.toString())
-    res.send(data)
+        zip.addLocalFolder(folderPath)
+
+        const downloadName = `${Date.now()}.zip`
+        const data = zip.toBuffer()
+        res.set('Content-Type', 'application/octet-stream')
+        res.set('Content-Disposition', `attachment; filename=${downloadName}`)
+        res.set('Content-Length', data.length.toString())
+        res.send(data)
+      })
+      .catch((err) => {
+        console.error(err)
+        res.status(500).send('Error generating files')
+      })
   }
-  res.status(404).send('Sorry, we cannot find that!')
 })
 
 app.listen(PORT, () => {

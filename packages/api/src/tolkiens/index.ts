@@ -23,8 +23,9 @@ async function fetchCode (url: string) {
   try {
     const properties = await getCss(url)
     parseProperties(properties)
+    console.log('parsed')
   } catch (error) {
-    console.error(error)
+    console.error('fetchCode', error)
   }
 }
 
