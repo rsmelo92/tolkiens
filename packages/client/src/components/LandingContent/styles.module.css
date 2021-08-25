@@ -43,3 +43,22 @@
   width: 30%;
   max-width: 390px;
 }
+
+@media only screen and (max-width: 600px) {
+  .item {
+    flex-direction: column;
+  }
+
+  .innerItem {
+    width: 100%;
+  }
+
+  .imageOne, .imageTwo {
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  .imageTwo {
+    max-width: 250px;
+  }
+}

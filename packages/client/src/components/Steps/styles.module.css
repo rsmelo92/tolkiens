@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.cardInnerWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .cardInner {
   display: flex;
   align-items: center;
@@ -32,4 +37,10 @@
 
 .text {
   line-height: 23px;
+}
+
+@media only screen and (max-width: 600px) {
+  .cardInnerWrapper {
+    flex-direction: column;
+  }
 }
