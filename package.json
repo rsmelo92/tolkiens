@@ -2,13 +2,19 @@
   "name": "tolkiens",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": "git@github.com:rsmelo92/tolkiens.git",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn clean && yarn workspaces run build",
-    "dev": "yarn build && node ./dist/api/server/server.js"
+    "build": "yarn workspaces run build",
+    "dev": "yarn build && node ./dist/api/server/server.js exit 0",
+    "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\""
   },
   "author": "Rafael Melo <rsmelo_@hotmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0"
+  }
 }
