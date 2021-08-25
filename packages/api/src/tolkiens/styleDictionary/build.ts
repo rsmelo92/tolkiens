@@ -9,7 +9,7 @@ type File = {
 }
 
 function buildDictionary (file: File) {
-  const sourcePath = path.join(__dirname, 'style.json')
+  const sourcePath = path.join(__dirname, '../style.json')
   const stringfied = JSON.stringify(file)
   const fileName = Object.keys(file.color)
   const platforms = configs(fileName[0])

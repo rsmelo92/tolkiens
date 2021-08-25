@@ -1,6 +1,6 @@
 import path from 'path'
 
-const buildPath = path.join(__dirname, 'build/')
+const buildPath = path.join(__dirname, '../build/')
 
 const configs = (fileName: string) => ({
   scss: {
