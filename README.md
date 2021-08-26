@@ -1,6 +1,9 @@
 # tolkiens
 
 TODO
-- [ ] Logic client x server
+
+- [x] Logic client x server
+- [ ] Create Logo
 - [ ] SEO
 - [ ] Add captcha
+- [ ] Dont generate files, only use memory

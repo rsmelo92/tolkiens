@@ -1,4 +1,5 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 import AdmZip from 'adm-zip'
 import path from 'path'
 
@@ -10,6 +11,7 @@ const PORT = 3000
 const app = express()
 
 app.use(express.static(path.join(__dirname, '../../client')))
+app.use(cookieParser())
 
 app.get('/', (_, res) => {
   res.sendFile(path.join(__dirname, '../../client', 'index.html'))
@@ -20,11 +22,8 @@ app.get('/download', (req, res) => {
   if (tag) {
     const buff = Buffer.from(tag, 'base64')
     const url = buff.toString('utf-8')
-
     fetchCode(url)
-      .then(response => {
-        console.log({ response })
-
+      .then(() => {
         const folderPath = path.join(__dirname, '../tolkiens/build')
         const zip = new AdmZip()
 
@@ -32,6 +31,7 @@ app.get('/download', (req, res) => {
 
         const downloadName = `${Date.now()}.zip`
         const data = zip.toBuffer()
+
         res.set('Content-Type', 'application/octet-stream')
         res.set('Content-Disposition', `attachment; filename=${downloadName}`)
         res.set('Content-Length', data.length.toString())
