@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn workspaces run build",
-    "start": "node ./dist/api/server/server.js",
+    "start": "yarn build && node ./dist/api/server/server.js",
     "dev": "yarn build && yarn start",
     "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\""
   },
