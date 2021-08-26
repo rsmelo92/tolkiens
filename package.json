@@ -11,7 +11,7 @@
     "build": "yarn workspaces run build",
     "start": "node ./dist/api/server/server.js",
     "dev": "yarn build && yarn start",
-    "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\"",
+    "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\" --initial --silent",
     "postinstall": "yarn build",
     "deploy": "git push heroku main"
   },

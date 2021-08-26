@@ -36,13 +36,13 @@ function Form() {
             onChange={(event: Event) => setValue(event.target.value)} 
           />
           <div className={styles.button}>
-            <Button text="Generate!" />
+            <Button text="Generate!" isLoading={opened} />
           </div>
         </div>
         <Steps />
       </form>
 
-      <Modal open={opened} onClose={() => setOpened(false)}/>
+      <Modal open={opened} onClose={() => {setOpened(false)}} />
     </section>
   )
 }
