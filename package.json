@@ -9,9 +9,10 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn workspaces run build",
-    "start": "yarn build && node ./dist/api/server/server.js",
+    "start": "node ./dist/api/server/server.js",
     "dev": "yarn build && yarn start",
-    "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\""
+    "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\"",
+    "postinstall": "yarn build"
   },
   "author": "Rafael Melo <rsmelo_@hotmail.com>",
   "license": "MIT",
