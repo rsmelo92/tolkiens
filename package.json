@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn workspaces run build",
-    "dev": "yarn build && node ./dist/api/server/server.js exit 0",
+    "dev": "yarn build && node ./dist/api/server/server.js",
     "dev:watch": "chokidar \"**/*.tsx\" \"**/*.ts\" -c \"yarn dev\""
   },
   "author": "Rafael Melo <rsmelo_@hotmail.com>",

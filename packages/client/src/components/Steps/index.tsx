@@ -9,7 +9,7 @@ function Steps() {
         <div className={styles.cardInnerWrapper}>
           <div className={styles.cardInner}>
             <h4 className={styles.cardNumber}>1</h4>
-            <p className={styles.text}>Fetch and analyze site</p>
+            <p className={styles.text}>Type your site and let the robots analyze it by clicking on Generate!</p>
           </div>
           <div className={styles.cardInner}>
             <h4 className={styles.cardNumber}>2</h4>
@@ -17,7 +17,7 @@ function Steps() {
           </div>
           <div className={styles.cardInner}>
             <h4 className={styles.cardNumber}>3</h4>
-            <p className={styles.text}>Serve variations (Flutter, RN, Android, Sass...)</p>
+            <p className={styles.text}>Get your variations for Flutter, React Native, Android, Sass... And much more</p>
           </div>
         </div>
       </Card>

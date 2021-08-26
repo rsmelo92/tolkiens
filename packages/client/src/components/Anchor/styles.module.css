@@ -1,0 +1,14 @@
+.anchor {
+  color: var(--primary-text);
+  text-decoration: none;
+}
+
+.anchor:active, 
+.anchor:visited {
+  color: var(--secondary-background);
+  text-decoration: underline;
+}
+
+.anchor:hover {
+  color: var(--primary-background);
+}
