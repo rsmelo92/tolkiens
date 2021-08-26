@@ -7,3 +7,4 @@ TODO
 - [ ] SEO
 - [ ] Add captcha
 - [ ] Dont generate files, only use memory
+- [ ] Add tests
