@@ -30,6 +30,7 @@
     "express-zip": "^3.0.0",
     "get-css": "^4.0.3",
     "get-css-colors": "^4.0.0",
+    "rimraf": "^3.0.2",
     "style-dictionary": "^3.0.2"
   }
 }

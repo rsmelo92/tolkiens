@@ -1,5 +1,6 @@
 import express from 'express'
 import AdmZip from 'adm-zip'
+import rimraf from 'rimraf'
 import path from 'path'
 
 import { fetchCode } from '../tolkiens'
@@ -26,6 +27,7 @@ app.get('/download', (req, res) => {
         const zip = new AdmZip()
 
         zip.addLocalFolder(folderPath)
+        rimraf.sync(folderPath)
 
         const downloadName = `${Date.now()}.zip`
         const data = zip.toBuffer()
