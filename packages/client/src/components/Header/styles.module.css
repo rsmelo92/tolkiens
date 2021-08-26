@@ -7,7 +7,6 @@ header {
 }
 
 .logoWrapper {
-  flex-basis: 33%;
   display: flex;
   align-items: center;
 }
@@ -16,15 +15,4 @@ header {
   color: var(--primary-background);
   font-weight: 600;
   margin-top: 1px;
-}
-
-.text {
-  text-align: center;
-  flex-basis: 33%;
-}
-
-@media only screen and (max-width: 600px) {
-  .text {
-    display: none;
-  }
 }

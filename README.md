@@ -3,7 +3,7 @@
 TODO
 
 - [x] Logic client x server
-- [ ] Create Logo
+- [x] Create Logo
 - [ ] SEO
 - [ ] Add captcha
 - [ ] Dont generate files, only use memory
