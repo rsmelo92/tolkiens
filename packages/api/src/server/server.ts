@@ -5,7 +5,7 @@ import path from 'path'
 import { fetchCode } from '../tolkiens'
 
 type Params = { tag?: string }
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 const app = express()
 
