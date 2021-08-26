@@ -5,8 +5,7 @@
 
 .anchor:active, 
 .anchor:visited {
-  color: var(--secondary-background);
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .anchor:hover {

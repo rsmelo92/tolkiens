@@ -20,7 +20,7 @@ function Footer() {
           </li>
           <li className={styles.listItem}>
             <Anchor url="https://www.w3.org/TR/wai-aria-1.1/">
-              Accessible Rich Internet Applications - W3c
+              Accessible Rich Internet Applications - W3C
             </Anchor>
           </li>
           <li className={styles.listItem}>
