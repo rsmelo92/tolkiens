@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react'
 import Input from '../Input'
 import Button from '../Button'
 import Steps from '../Steps'
+import Modal from '../Modal'
 
 import styles from './styles.module.css'
 
@@ -14,12 +15,14 @@ interface Event {
 
 function Form() {
   const [value, setValue] = useState<string>()
+  const [opened, setOpened] = useState<boolean>(false)
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if(value) {
-      window.location.assign(`/download?tag=${btoa(value)}`); 
+      window.location.assign(`/download?tag=${btoa(value)}`);
+      setOpened(true)
     }
   }
 
@@ -38,6 +41,8 @@ function Form() {
         </div>
         <Steps />
       </form>
+
+      <Modal open={opened} onClose={() => setOpened(false)}/>
     </section>
   )
 }

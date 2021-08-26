@@ -1,11 +1,8 @@
 .button {
-  background-color: var(--primary-background);
-  
   min-width: 100px;
   align-items: center;
   border: 0;
   border-radius: 3px;
-  color: #fff;
   cursor: pointer;
   display: inline-flex;
   height: 56px;
@@ -23,6 +20,16 @@
   white-space: nowrap;
 
   font-size: 16px;
+}
+
+.primary {
+  background-color: var(--primary-background);
+  color: #fff;
+}
+
+.secondary {
+  background-color: var(--neutral-background);
+  color: var(--primary-text);
 }
 
 .button:disabled {
