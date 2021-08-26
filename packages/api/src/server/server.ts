@@ -1,5 +1,4 @@
 import express from 'express'
-import cookieParser from 'cookie-parser'
 import AdmZip from 'adm-zip'
 import path from 'path'
 
@@ -11,7 +10,6 @@ const PORT = 3000
 const app = express()
 
 app.use(express.static(path.join(__dirname, '../../client')))
-app.use(cookieParser())
 
 app.get('/', (_, res) => {
   res.sendFile(path.join(__dirname, '../../client', 'index.html'))
