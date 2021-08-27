@@ -13,7 +13,7 @@ function LandingContent() {
           <div className={styles.innerItem}>
             <img src={code} alt="help icon" />
 
-            <h4 className={styles.itemTitle}>No code is the best code</h4>
+            <h4 className={styles.itemTitle}>"No code" is the best code</h4>
             <div>
               <p>
                 No need for code! Just set from which site the tokens should be fetched. Then use the generated files in your Design System
