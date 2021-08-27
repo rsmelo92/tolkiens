@@ -2,7 +2,7 @@ import getCss from 'get-css'
 import cssstats from 'cssstats'
 
 // import { parseColor } from './parsers/color'
-import { parseFont } from './parsers/font'
+import { parseFont } from './parsers/font/font'
 import { buildDictionary } from './styleDictionary/build'
 
 type ParseProperties = {

@@ -1,8 +1,7 @@
-import { 
-  formatArray,
-  parseFontFamily,
-  parseFontWeight,
-} from './font_utils'
+import { formatArray } from './font_utils'
+
+import { parseFontFamily } from './family'
+import { parseFontWeight } from './weight'
 
 function parseFont (properties: Properties) {
   const fontFamilyJson = parseFontFamily(properties['font-family'])
