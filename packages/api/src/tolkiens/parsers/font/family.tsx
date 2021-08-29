@@ -1,7 +1,7 @@
-import { formatArray } from './font_utils'
+import { formatArray, sortByCount } from './font_utils'
 
 function parseFontFamily(array: Array<string>) {
-  const fontFamily = formatArray(array).sort((a, b) => b.count - a.count)
+  const fontFamily = sortByCount(formatArray(array))
   return {
     "font": {
       "family": {

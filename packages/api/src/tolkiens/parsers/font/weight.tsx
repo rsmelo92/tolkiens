@@ -1,4 +1,4 @@
-import { formatArray } from './font_utils'
+import { formatArray, sortAlphabetically } from './font_utils'
 
 import type { Value } from './font_utils'
 
@@ -25,7 +25,14 @@ const WEIGHT_MAPPING: Mapping = {
 }
 
 const unveilFontWeight = (array: Array<Value>) => 
-  array.map(({ value }: Value) => ({ [WEIGHT_MAPPING[value]]: { value } }))
+  array.map(({ value }: Value) => {
+    const key = WEIGHT_MAPPING[value]
+    if (key) {
+      return { 
+        [key]: { value } 
+      }
+    }
+  })
   .filter(Boolean)
   .reduce((obj, item) => ({ ...obj, ...item }), {})
 
@@ -34,18 +41,17 @@ function parseFontWeight(array: Array<string>) {
   const fontWeight = formatArray(array)
     .map(normalizeWeight)
     .filter(removeNonNumberWeight)
-    .sort((a, b) => {
-      if(a.value < b.value) { return -1; }
-      if(a.value > b.value) { return 1; }
-      return 0;
-    })
-    return {
-      "font": {
-        "weight": {
-          ...unveilFontWeight(fontWeight),
-        }
+
+  const sortedWeight = sortAlphabetically(fontWeight)
+  console.log(unveilFontWeight(sortedWeight));
+  
+  return {
+    "font": {
+      "weight": {
+        ...unveilFontWeight(sortedWeight),
       }
     }
+  }
 }
 
 export { parseFontWeight }
