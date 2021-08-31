@@ -1,5 +1,10 @@
 # tolkiens
 
+MVP:
+- [x] Typography
+- [ ] Spacing
+- [ ] Colors
+
 TODO
 
 - [x] Logic client x server
