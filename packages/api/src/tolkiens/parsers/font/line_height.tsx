@@ -1,4 +1,5 @@
-import { formatArray, sortByCount, removeUnits } from './font_utils'
+import { formatArray, sortByCount } from '../utils'
+import { removeUnits } from './font_utils'
 
 const ALTERNATIVES = ['1.4', '1.5', '1.6']
 

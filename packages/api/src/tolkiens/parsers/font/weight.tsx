@@ -1,6 +1,5 @@
-import { formatArray, sortAlphabetically } from './font_utils'
-
-import type { Value } from './font_utils'
+import { formatArray, sortAlphabetically } from '../utils'
+import type { Value } from '../utils'
 
 interface Mapping {
   [key: string]: string

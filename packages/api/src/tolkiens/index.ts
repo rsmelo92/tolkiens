@@ -3,6 +3,7 @@ import cssstats from 'cssstats'
 
 // import { parseColor } from './parsers/color/color'
 import { parseFont } from './parsers/font/font'
+import { parseOpacity } from './parsers/opacity/opacity'
 import { buildDictionary } from './styleDictionary/build'
 
 type ParseProperties = {
@@ -16,10 +17,14 @@ function parseProperties ({ css }: ParseProperties) {
     }
   } = cssstats(css)
 
+  console.log({properties});
+  
+
   // Colors
   // parseColor(properties).forEach(buildDictionary)
 
   parseFont(properties).forEach(buildDictionary)
+  parseOpacity(properties).forEach(buildDictionary)
 }
 
 async function fetchCode (url: string) {
