@@ -1,10 +1,12 @@
-import { formatArray } from './font_utils'
-
 import { parseFontFamily } from './family'
 import { parseFontWeight } from './weight'
 import { parseFontSize } from './size'
+import { parseLineHeight } from './line_height'
+import { parseTextColor } from './text_color'
 
 function parseFont (properties: Properties) {
+  console.log({properties});
+  
   const fontFamilyJson = parseFontFamily(properties['font-family'])
   console.log({ fontFamilyJson: JSON.stringify(fontFamilyJson, null, 2) });
 
@@ -14,15 +16,10 @@ function parseFont (properties: Properties) {
   const fontSizeJson = parseFontSize(properties['font-size'])
   console.log({ fontSizeJson: JSON.stringify(fontSizeJson, null, 2) });
   
+  const lineHeightJson = parseLineHeight(properties['line-height'])
+  console.log({ lineHeightJson: JSON.stringify(lineHeightJson, null, 2) });
   
-  
-  
-  const lineHeight = formatArray(properties['line-height'])
-  const letterSpacing = formatArray(properties['letter-spacing'])
-
-  console.log({lineHeight});
-  console.log({letterSpacing});
-  
+  const textColorJson = parseTextColor(properties.color)
 
   return []
 }

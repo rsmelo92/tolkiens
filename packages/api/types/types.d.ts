@@ -2,6 +2,7 @@ interface Properties {
   background: Array<string>;
   fill: Array<string>;
   'background-color': Array<string>;
+  'color': Array<string>;
   'font-family': Array<string>;
   'font-size': Array<string>;
   'font-weight': Array<string>;

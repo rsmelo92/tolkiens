@@ -43,8 +43,7 @@ function parseFontWeight(array: Array<string>) {
     .filter(removeNonNumberWeight)
 
   const sortedWeight = sortAlphabetically(fontWeight)
-  console.log(unveilFontWeight(sortedWeight));
-  
+
   return {
     "font": {
       "weight": {

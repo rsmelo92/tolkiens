@@ -3,10 +3,14 @@ export interface Value {
   count: number;
 } 
 
+const NEUTRAL_REGEX = /inherit|initial|unset|\(|revert|icons|transparent|smaller|larger/
+const UNITS_REGEX = /cm|mm|in|px|pt|pc|em|ex|rem|ch|vw|vh|vmin|vmax|%/
+
 const cleanString = (str: string) => str.replace(/['"]+/g, '')
 const getUniqueArray = (array: Array<string>) => Array.from(new Set(array))
 const countOccurrences = (arr: Array<string>, val: string) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
-const filterNeutralKeyWords = (str: string) => !/inherit|initial|unset|\(|revert|icons/gi.test(str) 
+const filterNeutralKeyWords = (str: string) => !NEUTRAL_REGEX.test(str) 
+const removeUnits = (str: string) => !UNITS_REGEX.test(str) 
 
 function formatArray(array: Array<string>) {
   const cleanedArray = array.map(cleanString)
@@ -28,4 +32,9 @@ const sortAlphabetically =  (array: Array<Value>) => array.sort((a, b) => {
 
 const sortByCount = (array: Array<Value>) => array.sort((a, b) => b.count - a.count)
 
-export { formatArray, sortAlphabetically, sortByCount }
+export { 
+  formatArray,
+  sortAlphabetically,
+  sortByCount,
+  removeUnits,
+}
