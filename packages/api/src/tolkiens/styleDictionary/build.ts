@@ -9,12 +9,7 @@ type File = {
 }
 
 const unveilFileName = (file: File) => {
-  console.log({file});
-  
   const nested = Object.values(file)[0]
-  console.log({nested});
-  console.log(Object.keys(nested)[0]);
-  
   return Object.keys(nested)[0]
 }
 
