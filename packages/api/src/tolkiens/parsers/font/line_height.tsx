@@ -2,6 +2,8 @@ import { formatArray, sortByCount, removeUnits } from './font_utils'
 
 const ALTERNATIVES = ['1.4', '1.5', '1.6']
 
+const normalizeHeight = (value: number) => value.toFixed(2).toString()
+
 const unveilLineHeight = (heightArray?: Array<string>) => {
   if (heightArray && heightArray.length > 0) {
     const [height] = heightArray;
@@ -11,9 +13,9 @@ const unveilLineHeight = (heightArray?: Array<string>) => {
       const lg = parseFloat(height) + 0.2
   
       return {
-        "sm": { "value": sm.toString() },
-        "md": { "value": height },
-        "lg": { "value": lg.toString() },
+        "small": { "value": normalizeHeight(sm) },
+        "medium": { "value": height },
+        "large": { "value": normalizeHeight(lg) },
         "reset": { "value": "initial" },
       }
     }
@@ -21,9 +23,9 @@ const unveilLineHeight = (heightArray?: Array<string>) => {
 
   // Default
   return {
-    "sm": { "value": "1.25" },
-    "md": { "value": "1.5" },
-    "lg": { "value": "1.8" },
+    "small": { "value": "1.25" },
+    "medium": { "value": "1.5" },
+    "large": { "value": "1.8" },
     "reset": { "value": "initial" },
   }
 }
@@ -41,7 +43,11 @@ function parseLineHeight(array: Array<string>) {
     return ''
   }).filter(Boolean)
   
-  return unveilLineHeight(lineHeightBase)
+  return {
+    'font': {
+      'line-height': unveilLineHeight(lineHeightBase)
+    }
+  }
 }
 
 

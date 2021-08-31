@@ -14,14 +14,14 @@ const removeNonNumberWeight = ({ value }: Value) =>  !/lighter|bolder/g.test(val
 
 const WEIGHT_MAPPING: Mapping = {
   '100': 'thin',
-  '200': 'extra-light',
+  '200': 'extralight',
   '300': 'light',
   '400': 'normal',
   '500': 'medium',
-  '600': 'semi-bold',
+  '600': 'semibold',
   '700': 'bold',
-  '800': 'extra-bold',
-  '900': 'ultra-bold',
+  '800': 'extrabold',
+  '900': 'ultrabold',
 }
 
 const unveilFontWeight = (array: Array<Value>) => 
@@ -46,9 +46,7 @@ function parseFontWeight(array: Array<string>) {
 
   return {
     "font": {
-      "weight": {
-        ...unveilFontWeight(sortedWeight),
-      }
+      "weight": unveilFontWeight(sortedWeight)
     }
   }
 }
