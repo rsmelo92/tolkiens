@@ -5,13 +5,13 @@ import fs from 'fs'
 import { configs } from './config'
 
 type File = {
-  color: object;
+  font: object;
 }
 
 function buildDictionary (file: File) {
   const sourcePath = path.join(__dirname, '../style.json')
   const stringfied = JSON.stringify(file)
-  const fileName = Object.keys(file.color)
+  const fileName = Object.keys(file.font)
   const platforms = configs(fileName[0])
 
   fs.writeFileSync(sourcePath, stringfied)
