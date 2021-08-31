@@ -5,14 +5,19 @@ import fs from 'fs'
 import { configs } from './config'
 
 type File = {
-  color: object;
+  font: object;
+}
+
+const unveilFileName = (file: File) => {
+  const nested = Object.values(file)[0]
+  return Object.keys(nested)[0]
 }
 
 function buildDictionary (file: File) {
   const sourcePath = path.join(__dirname, '../style.json')
   const stringfied = JSON.stringify(file)
-  const fileName = Object.keys(file.color)
-  const platforms = configs(fileName[0])
+  const fileName = unveilFileName(file)
+  const platforms = configs(fileName)
 
   fs.writeFileSync(sourcePath, stringfied)
 

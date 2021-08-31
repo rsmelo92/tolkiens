@@ -1,4 +1,5 @@
 import getColors from 'get-css-colors'
+
 import {
   testBlackAndWhiteVariations,
   countCases,
@@ -7,8 +8,6 @@ import {
   unveilBaseTokens,
   unveilNeutralTokens
 } from './color_utils'
-
-import type { Properties } from './color_utils'
 
 function parseColor (properties: Properties) {
   const allColors = getAllColors(properties)

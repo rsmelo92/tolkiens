@@ -29,7 +29,7 @@ function Modal({ open, onClose }: Props) {
 
         <div className={styles.content}>
           <h2 className={styles.title}>Success!</h2>
-          <p className={styles.text}>A demo of the generated tokens is being downloaded. If you wish more tokens and a detailed analysis, consider filling the form request below</p>
+          <p className={styles.text}>A demo of the generated tokens is being downloaded. You can also request more tokens and a detailed analysis</p>
         </div>
 
         <div className={styles.footer}>

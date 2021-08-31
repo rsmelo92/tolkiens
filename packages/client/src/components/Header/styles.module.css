@@ -9,6 +9,7 @@ header {
 .logoWrapper {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logoText {

@@ -1,17 +1,3 @@
-
-export interface CountCase {
-  name: string;
-  count: number;
-}
-
-export type Colors = Array<CountCase>
-
-export interface Properties {
-  background: Array<string>;
-  fill: Array<string>;
-  'background-color': Array<string>;
-}
-
 function testBlackAndWhiteVariations (color: string) {
   const regex = /^#fff$|#ffffff|white|^#000$|#000000|black|(([0-9]?[0-9]?[0-9],))\2+/gmi
   return regex.test(color)

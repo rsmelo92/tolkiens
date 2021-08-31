@@ -5,7 +5,8 @@ module.exports = {
   },
   extends: [
     'standard',
-    'eslint:recommended'
+    'eslint:recommended',
+    'eslint:@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -17,5 +18,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'no-undef': 'off'
   }
 }

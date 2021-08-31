@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint ./src/*.ts",
+    "lint": "eslint *.ts",
     "build": "tsc --outDir ../../dist/api",
     "run:server": "node dist/server/server.js"
   },
