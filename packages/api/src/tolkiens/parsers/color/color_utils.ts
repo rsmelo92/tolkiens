@@ -1,66 +1,68 @@
-function testBlackAndWhiteVariations (color: string) {
-  const regex = /^#fff$|#ffffff|white|^#000$|#000000|black|(([0-9]?[0-9]?[0-9],))\2+/gmi
-  return regex.test(color)
+import chroma from "chroma-js";
+import { filterNeutralKeyWords } from '../../utils'
+
+import type { Value } from '../../utils'
+
+const NEUTRAL_MIN_DISTANCE = 300
+const PRIMARY_MIN_DISTANCE = 200
+
+const hasNeutralDistance = (color: string) => {
+  const whiteDistance = Math.floor(chroma.distance('#ffffff', color));
+  const whiteDelta = Math.floor(chroma.deltaE('#ffffff', color));
+  const blackDistance = Math.floor(chroma.distance('#000000', color));
+  const blackDelta = Math.floor(chroma.deltaE('#000000', color));
+  const total = blackDistance + blackDelta + whiteDistance + whiteDelta
+
+  return total >= NEUTRAL_MIN_DISTANCE
 }
 
-function countCases (array: Array<string>, name: string) {
-  const count = array.filter((el) => el === name).length
+function getScalePallete(color: string, key: string = 'primary') {
+  const palleteLight = chroma.scale([color, 'ffffff']).colors(4)
+  const palleteDark = chroma.scale([color, '000000']).colors(4)
   return {
-    name,
-    count
+    '00': { value: color },
+    '01': { value: palleteLight[1] },
+    '02': { value: palleteLight[2] },
+    '03': { value: palleteDark[1] },
+    '04': { value: palleteDark[2] },
   }
+}
+
+function getSecondaryColor(primary: string, colors: Array<Value>) {
+  const secondary = colors.find(({ value }) => {
+    const primaryDistance = Math.floor(chroma.distance(primary, value));
+    const primaryDelta = Math.floor(chroma.deltaE(primary, value));
+    return primaryDelta + primaryDistance >= PRIMARY_MIN_DISTANCE;
+  })
+
+  if (!secondary) {
+    // TODO: Generate complementary color from primary color
+    return chroma(primary).saturate(3).hex()
+  }
+
+  return secondary.value
 }
 
 function getAllColors (properties: Properties) {
   return [
-    ...properties.background,
-    ...properties.fill,
-    ...properties['background-color']
+    ...properties.background || [],
+    ...properties.fill || [],
+    ...properties['background-color'] || [],
   ]
 }
 
-function unveilBaseTokens (colors: Colors) {
-  if (colors && colors.length > 0) {
-    const primary = colors && colors[0] ? { primary: { value: colors[0].name } } : {}
-    const secondary = colors && colors[1] ? { secondary: { value: colors[1].name } } : {}
-    const interactive = colors && colors[2] ? { interactive: { value: colors[2].name } } : {}
-    const common = colors && colors[3] ? { common: { value: colors[3].name } } : {}
+function normalizeColorsToHex(properties: Properties) {
+  const allColors = getAllColors(properties)
+  const filtered = allColors.filter(filterNeutralKeyWords)
+  const allHex = filtered.map(c => chroma(c).hex())
 
-    return {
-      ...primary,
-      ...secondary,
-      ...interactive,
-      ...common
-    }
-  }
-}
-
-function unveilNeutralTokens (colors: Colors) {
-  if (colors && colors.length > 0) {
-    const one = colors && colors[0] ? { '01': { value: colors[0].name } } : {}
-    const two = colors && colors[1] ? { '02': { value: colors[1].name } } : {}
-    const three = colors && colors[2] ? { '03': { value: colors[2].name } } : {}
-    const four = colors && colors[3] ? { '04': { value: colors[3].name } } : {}
-    const five = colors && colors[4] ? { '05': { value: colors[4].name } } : {}
-    const six = colors && colors[5] ? { '06': { value: colors[5].name } } : {}
-    const seven = colors && colors[6] ? { '07': { value: colors[6].name } } : {}
-
-    return {
-      ...one,
-      ...two,
-      ...three,
-      ...four,
-      ...five,
-      ...six,
-      ...seven
-    }
-  }
+  return allHex
 }
 
 export {
-  testBlackAndWhiteVariations,
-  countCases,
   getAllColors,
-  unveilBaseTokens,
-  unveilNeutralTokens
+  normalizeColorsToHex,
+  hasNeutralDistance,
+  getSecondaryColor,
+  getScalePallete,
 }

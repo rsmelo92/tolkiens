@@ -3,7 +3,7 @@ export interface Value {
   count: number;
 } 
 
-const NEUTRAL_REGEX = /inherit|initial|unset|\(|revert|icons|transparent|smaller|larger/
+const NEUTRAL_REGEX = /inherit|initial|none|unset|\(|revert|icons|transparent|smaller|larger|currentColor/
 
 const sortAlphabetically =  (array: Array<Value>) => array.sort((a, b) => {
   if(a.value < b.value) { return -1; }
@@ -34,4 +34,5 @@ export {
   formatArray,
   sortByCount,
   sortAlphabetically,
+  filterNeutralKeyWords,
 }

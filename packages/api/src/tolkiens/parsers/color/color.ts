@@ -1,34 +1,13 @@
-import getColors from 'get-css-colors'
-import { colord } from "colord";
-
+import { normalizeColorsToHex } from './color_utils'
 import { formatArray, sortByCount } from '../../utils'
-
-import {
-  testBlackAndWhiteVariations,
-  countCases,
-  getAllColors,
-  unveilBaseTokens,
-  unveilNeutralTokens
-} from './color_utils'
+import { parseThemeColors } from './theme'
 
 function parseColor (properties: Properties) {
-  const allColors = getAllColors(properties)
-
-  const allHex = allColors.map(c => {
-    const hex = colord(c).toHex()
-    console.log({ c });
-    console.log({ hex });
-    return hex
-  })
-
-  const uniqueValues = Array.from(new Set(allHex)).sort()
-  const uniqueColors = uniqueValues.filter(getColors)
-
-  console.log({uniqueValues});
-  console.log({uniqueColors});
+  const normalizedColors = normalizeColorsToHex(properties)
+  const colors = sortByCount(formatArray(normalizedColors))
+  const themeJson = parseThemeColors(colors)
   
-
-  return []
+  return [themeJson]
 }
 
 export { parseColor }
