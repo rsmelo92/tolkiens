@@ -1,3 +1,4 @@
+import Anchor from '../Anchor'
 import code from './code.svg'
 import pending from './pending.svg'
 import laydown from './laydown.svg'
@@ -46,7 +47,7 @@ function LandingContent() {
             <h4 className={styles.itemTitle}>Always generate tokens</h4>
             <div>
               <p>
-                If no relevant pattern is found on your site, the tokens will be generated <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">following CSS guidelines from MDN</a>
+                If no relevant pattern is found on your site, the tokens will be generated <Anchor url="https://developer.mozilla.org/en-US/docs/Web/CSS">following CSS guidelines from MDN</Anchor>
               </p>
             </div>
           </div>
