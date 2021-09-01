@@ -1,45 +1,13 @@
-import getColors from 'get-css-colors'
-
-import {
-  testBlackAndWhiteVariations,
-  countCases,
-  sortByCount,
-  getAllColors,
-  unveilBaseTokens,
-  unveilNeutralTokens
-} from './color_utils'
+import { normalizeColorsToHex } from './color_utils'
+import { formatArray, sortByCount } from '../../utils'
+import { parseThemeColors } from './theme'
 
 function parseColor (properties: Properties) {
-  const allColors = getAllColors(properties)
-  const uniqueValues = Array.from(new Set(allColors)).sort()
-
-  const uniqueColors = uniqueValues.filter(getColors)
-
-  const colors = uniqueColors.map(color => {
-    return countCases(allColors, color)
-  })
-
-  const sortedColors = sortByCount(colors)
-
-  const neutralColors = sortedColors.filter(({ name }) => testBlackAndWhiteVariations(name))
-  const noNeutralColors = sortedColors.filter(({ name }) => !testBlackAndWhiteVariations(name))
-
-  const base = unveilBaseTokens(noNeutralColors)
-  const neutral = unveilNeutralTokens(neutralColors)
-
-  const baseJson = {
-    color: {
-      base
-    }
-  }
-
-  const neutralJson = {
-    color: {
-      neutral
-    }
-  }
-
-  return [baseJson, neutralJson]
+  const normalizedColors = normalizeColorsToHex(properties)
+  const colors = sortByCount(formatArray(normalizedColors))
+  const themeJson = parseThemeColors(colors)
+  
+  return [themeJson]
 }
 
 export { parseColor }
