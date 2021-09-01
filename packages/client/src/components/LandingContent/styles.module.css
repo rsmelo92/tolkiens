@@ -34,14 +34,20 @@
   margin: 8px;
 }
 
-.imageOne {
-  width: 42%;
+.imageOne, .imageTwo, .imageThree {
   max-width: 390px;
+}
+
+.imageOne {
+  width: 32%;
 }
 
 .imageTwo {
   width: 30%;
-  max-width: 390px;
+}
+
+.imageThree {
+  width: 34%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -53,7 +59,7 @@
     width: 100%;
   }
 
-  .imageOne, .imageTwo {
+  .imageOne, .imageTwo, .imageThree {
     margin-top: 24px;
     width: 100%;
   }

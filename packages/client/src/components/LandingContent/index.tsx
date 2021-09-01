@@ -1,7 +1,9 @@
 import code from './code.svg'
 import pending from './pending.svg'
-import fullimage from './fullimage.svg'
+import laydown from './laydown.svg'
 import idea from './idea.svg'
+import found from './found.svg'
+import check from './check.svg'
 import styles from './styles.module.css'
 
 function LandingContent() {
@@ -20,7 +22,7 @@ function LandingContent() {
               </p>
             </div>
           </div>
-          <img className={styles.imageOne} src={fullimage} alt="people looking at drawing" />
+          <img className={styles.imageOne} src={laydown} alt="woman coding on floor" />
         </div>
 
         <div className={styles.item}>
@@ -35,6 +37,20 @@ function LandingContent() {
             </div>
           </div>
           <img className={styles.imageTwo} src={idea} alt="woman thinking" />
+        </div>
+
+        <div className={styles.item}>
+          <div className={styles.innerItem}>
+            <img src={check} alt="check icon" />
+
+            <h4 className={styles.itemTitle}>Always generate tokens</h4>
+            <div>
+              <p>
+                If no relevant pattern is found on your site, the tokens will be generated <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">following CSS guidelines from MDN</a>
+              </p>
+            </div>
+          </div>
+          <img className={styles.imageThree} src={found} alt="staring at void" />
         </div>
 
       </div>

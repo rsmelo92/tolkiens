@@ -2,8 +2,8 @@
 
 MVP:
 - [x] Typography
+- [x] Colors
 - [ ] Spacing
-- [ ] Colors
 
 TODO
 
