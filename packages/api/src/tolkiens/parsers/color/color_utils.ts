@@ -54,7 +54,12 @@ function getAllColors (properties: Properties) {
 function normalizeColorsToHex(properties: Properties) {
   const allColors = getAllColors(properties)
   const filtered = allColors.filter(filterNeutralKeyWords)
-  const allHex = filtered.map(c => chroma(c).hex())
+  const allHex = filtered.map(c => {
+    if (chroma.valid(c)) {
+      return chroma(c).hex()
+    }
+    return '#fff'
+  })
 
   return allHex
 }

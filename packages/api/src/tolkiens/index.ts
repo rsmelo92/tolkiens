@@ -18,9 +18,8 @@ function parseProperties ({ css }: ParseProperties) {
 
   // Colors
   parseColor(properties).forEach(buildDictionary)
-
   // Fonts
-  // parseFont(properties).forEach(buildDictionary)
+  parseFont(properties).forEach(buildDictionary)
 }
 
 async function fetchCode (url: string) {

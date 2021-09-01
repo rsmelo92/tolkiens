@@ -3,7 +3,7 @@ import type { Value } from '../../utils'
 
 function parseThemeColors(colors: Array<Value>) {
   const nonNeutral = colors.filter(({ value }) => hasNeutralDistance(value))
-
+  
   const primaryColor = nonNeutral[0].value
   const primary = getScalePallete(primaryColor, 'primary')
 
