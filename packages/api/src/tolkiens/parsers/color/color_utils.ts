@@ -11,12 +11,6 @@ function countCases (array: Array<string>, name: string) {
   }
 }
 
-function sortByCount (items: Array<CountCase>) {
-  return items.sort((a, b) => {
-    return b.count - a.count
-  })
-}
-
 function getAllColors (properties: Properties) {
   return [
     ...properties.background,
@@ -66,7 +60,6 @@ function unveilNeutralTokens (colors: Colors) {
 export {
   testBlackAndWhiteVariations,
   countCases,
-  sortByCount,
   getAllColors,
   unveilBaseTokens,
   unveilNeutralTokens

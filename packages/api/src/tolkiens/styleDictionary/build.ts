@@ -5,7 +5,8 @@ import fs from 'fs'
 import { configs } from './config'
 
 type File = {
-  font: object;
+  font?: object;
+  color?: object;
 }
 
 const unveilFileName = (file: File) => {

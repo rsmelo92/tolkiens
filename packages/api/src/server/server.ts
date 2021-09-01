@@ -23,19 +23,19 @@ app.get('/download', (req, res) => {
     const url = buff.toString('utf-8')
     fetchCode(url)
       .then(() => {
-        const folderPath = path.join(__dirname, '../tolkiens/build')
-        const zip = new AdmZip()
+        // const folderPath = path.join(__dirname, '../tolkiens/build')
+        // const zip = new AdmZip()
 
-        zip.addLocalFolder(folderPath)
-        rimraf.sync(folderPath)
+        // zip.addLocalFolder(folderPath)
+        // rimraf.sync(folderPath)
 
-        const downloadName = `${Date.now()}.zip`
-        const data = zip.toBuffer()
+        // const downloadName = `${Date.now()}.zip`
+        // const data = zip.toBuffer()
 
-        res.set('Content-Type', 'application/octet-stream')
-        res.set('Content-Disposition', `attachment; filename=${downloadName}`)
-        res.set('Content-Length', data.length.toString())
-        res.send(data)
+        // res.set('Content-Type', 'application/octet-stream')
+        // res.set('Content-Disposition', `attachment; filename=${downloadName}`)
+        // res.set('Content-Length', data.length.toString())
+        // res.send(data)
       })
       .catch((err) => {
         console.error(err)

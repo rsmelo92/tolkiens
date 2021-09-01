@@ -1,7 +1,7 @@
 import getCss from 'get-css'
 import cssstats from 'cssstats'
 
-// import { parseColor } from './parsers/color/color'
+import { parseColor } from './parsers/color/color'
 import { parseFont } from './parsers/font/font'
 import { buildDictionary } from './styleDictionary/build'
 
@@ -17,9 +17,10 @@ function parseProperties ({ css }: ParseProperties) {
   } = cssstats(css)
 
   // Colors
-  // parseColor(properties).forEach(buildDictionary)
+  parseColor(properties).forEach(buildDictionary)
 
-  parseFont(properties).forEach(buildDictionary)
+  // Fonts
+  // parseFont(properties).forEach(buildDictionary)
 }
 
 async function fetchCode (url: string) {
