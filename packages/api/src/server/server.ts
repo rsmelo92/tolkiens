@@ -16,6 +16,23 @@ app.get('/', (_, res) => {
   res.sendFile(path.join(__dirname, '../../client', 'index.html'))
 })
 
+app.get('/tokens', (req, res) => {
+  const { tag }: Params = req.query
+  if (tag) {
+    const buff = Buffer.from(tag, 'base64')
+    const url = buff.toString('utf-8')
+    fetchCode(url)
+      .then((data) => {
+        console.log({ data });
+        res.send(data)
+      })
+      .catch((err) => {
+        console.error(err)
+        res.status(500).send(err)
+      })
+  }
+})
+
 app.get('/download', (req, res) => {
   const { tag }: Params = req.query
   if (tag) {
