@@ -1,6 +1,5 @@
 .palette {
   display: flex;
-  margin-bottom: 20px;
 }
 
 .colorContainer {
@@ -15,6 +14,11 @@
 .color {
   width: 100px;
   height: 100px;
+}
+
+.colorName {
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 600px) {

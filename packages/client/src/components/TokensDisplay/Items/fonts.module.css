@@ -2,6 +2,21 @@
   text-transform: capitalize;
 }
 
+.itemsSizeWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.itemsWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 600px) {
 
 }
