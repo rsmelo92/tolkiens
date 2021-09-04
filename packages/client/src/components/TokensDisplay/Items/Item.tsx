@@ -6,9 +6,13 @@ type ItemType = {
   title: string;
   style?: object;
   example?: React.ReactNode;
+  force?: boolean;
 }
 
-export default function Item({ item, title, style, example }: ItemType) {
+export default function Item({ item, title, style, example, force }: ItemType) {
+  if (!item && !force) {
+    return null;
+  }
   const ex = example || 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
   return (
     <Card>

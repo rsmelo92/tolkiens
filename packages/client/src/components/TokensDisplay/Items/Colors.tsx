@@ -28,6 +28,7 @@ export default function ColorRender({ item }: { item: ColorType }) {
       <h2>Colors</h2>
         <Item 
           title="Primary"
+          force
           example={
             <div className={styles.palette}>
               <ColorItem color={primary['00'].value} />
@@ -40,6 +41,7 @@ export default function ColorRender({ item }: { item: ColorType }) {
         />
         <Item 
           title="Secondary"
+          force
           example={
             <div className={styles.palette}>
               <ColorItem color={secondary['00'].value} />
