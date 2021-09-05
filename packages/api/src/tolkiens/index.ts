@@ -34,4 +34,9 @@ async function fetchCode (url: string) {
   }
 }
 
-export { fetchCode }
+function buildVariationsAndDownload(data: Array<object>) {
+  // TODO: Return buffer of the files, dont generate then
+  data.forEach(buildDictionary)
+}
+
+export { fetchCode, buildVariationsAndDownload }

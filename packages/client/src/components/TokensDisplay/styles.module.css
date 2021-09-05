@@ -12,5 +12,11 @@
 
 .containerShow {
   max-height: 100% !important;
-  opacity: 1;
+  opacity: 1 !important;
+}
+
+.downloadButton {
+  position: sticky;
+  top: 4px;
+  opacity: 0;
 }

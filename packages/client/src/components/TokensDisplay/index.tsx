@@ -1,5 +1,6 @@
 import Colors from './Items/Colors'
 import Fonts from './Items/Fonts'
+import Button from '../Button'
 
 import styles from './styles.module.css';
 
@@ -63,13 +64,27 @@ interface Props {
 function TokensDisplay({ tokens }: Props) {
   const fonts = tokens.map(t => t.font).filter(Boolean);
   const colors = tokens.map(t => t.color).filter(Boolean);
-  const showContainer = tokens && tokens.length > 0 ? styles.containerShow : '';
+  const hasTokens = tokens && tokens.length > 0;
+  const showContainer = hasTokens ? styles.containerShow : '';
+
+  const handleDownload = () => {
+    const stringifiedTokens = JSON.stringify(tokens);
+    const tokensEncoded = btoa(stringifiedTokens);
+    window.location.assign(`/download?tokens=${tokensEncoded}`)
+  }
 
   return (
-    <div className={`${styles.container} ${showContainer}`}>
-      {colors.map(c => <Colors item={c} />)}
-      {fonts.map(f => <Fonts item={f} />)}
-    </div>
+    <>
+      {hasTokens && (
+        <div className={`${styles.downloadButton} ${showContainer}`}>
+          <Button variation="secondary" text="Download Variations" onClick={handleDownload} />
+        </div>
+      )}
+      <div className={`${styles.container} ${showContainer}`}>
+        {colors.map(c => <Colors item={c} />)}
+        {fonts.map(f => <Fonts item={f} />)}
+      </div>
+    </>
   )
 }
 

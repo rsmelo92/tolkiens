@@ -10,6 +10,7 @@ function Header() {
         </svg>
         <span className={styles.logoText}>My Design Tokens</span>
       </div>
+      <small className={styles.beta}>[BETA]</small>
     </header>
   )
 }
