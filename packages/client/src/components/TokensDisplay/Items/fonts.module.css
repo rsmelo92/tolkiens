@@ -1,0 +1,28 @@
+.title {
+  text-transform: capitalize;
+}
+
+.itemsSizeWrapper {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
+}
+
+.itemsWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    margin-left: 20px;
+  }
+
+  .itemsSizeWrapper {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr;
+  }
+}

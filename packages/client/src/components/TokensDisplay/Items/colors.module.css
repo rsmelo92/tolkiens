@@ -1,0 +1,33 @@
+.palette {
+  display: flex;
+}
+
+.colorContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.colorContainer:first-child {
+  margin-right: 16px;
+}
+
+.color {
+  width: 100px;
+  height: 100px;
+}
+
+.colorName {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .color {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .colorName {
+    font-size: 9px;
+  }
+}

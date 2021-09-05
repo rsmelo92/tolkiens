@@ -17,18 +17,26 @@ function parseProperties ({ css }: ParseProperties) {
   } = cssstats(css)
 
   // Colors
-  parseColor(properties).forEach(buildDictionary)
+  const colorTokens = parseColor(properties)
+
   // Fonts
-  parseFont(properties).forEach(buildDictionary)
+  const fontTokens = parseFont(properties)
+  return [...colorTokens, ...fontTokens]
 }
 
 async function fetchCode (url: string) {
   try {
     const properties = await getCss(url)
-    parseProperties(properties)
+    return parseProperties(properties)
   } catch (error) {
     console.error('fetchCode', error)
+    return error
   }
 }
 
-export { fetchCode }
+function buildVariationsAndDownload(data: Array<object>) {
+  // TODO: Return buffer of the files, dont generate then
+  data.forEach(buildDictionary)
+}
+
+export { fetchCode, buildVariationsAndDownload }
