@@ -17,6 +17,7 @@
 
 .downloadButton {
   position: sticky;
-  top: 4px;
+  top: 8px;
+  margin-top: 8px;
   opacity: 0;
 }

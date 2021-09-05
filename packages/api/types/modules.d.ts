@@ -12,3 +12,8 @@ declare module 'get-css-colors' {
   const func = (a: string): Stats => {}
   export default func
 }
+
+declare module 'extract-css-core' {
+  const func = (url: string) => string
+  export default func
+}

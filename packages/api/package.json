@@ -30,6 +30,7 @@
     "cssstats": "^4.0.2",
     "express": "^4.17.1",
     "express-zip": "^3.0.0",
+    "extract-css-core": "^2.3.1",
     "get-css": "^4.0.3",
     "get-css-colors": "^4.0.0",
     "rimraf": "^3.0.2",

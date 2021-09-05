@@ -3,7 +3,7 @@ export interface Value {
   count: number;
 } 
 
-const NEUTRAL_REGEX = /inherit|initial|none|unset|\(|revert|icons|transparent|smaller|larger|currentColor/
+const NEUTRAL_REGEX = /inherit|initial|none|unset|var\(|revert|icons|transparent|smaller|larger|currentColor/
 
 const sortAlphabetically =  (array: Array<Value>) => array.sort((a, b) => {
   if(a.value < b.value) { return -1; }
