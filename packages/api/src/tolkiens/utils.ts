@@ -3,7 +3,7 @@ export interface Value {
   count: number;
 } 
 
-const NEUTRAL_REGEX = /inherit|initial|none|unset|\(|revert|icons|transparent|smaller|larger|currentColor/
+const NEUTRAL_REGEX = /inherit|initial|none|unset|var\(|revert|icons|transparent|smaller|larger|currentColor/
 
 const sortAlphabetically =  (array: Array<Value>) => array.sort((a, b) => {
   if(a.value < b.value) { return -1; }
@@ -30,28 +30,9 @@ function formatArray(array: Array<string>) {
   return cleanedArrayUniqueCount
 }
 
-const replaceCSSVariablesWithValue = (css: string) => {
-  const variablesValues = css.match(/--(.*?):(.*?);/g);
-  const variablesUses = css.match(/var\((.*?)\)/g);
-
-  if(variablesUses && variablesValues && variablesValues.length > 0 && variablesUses.length > 0) {
-    variablesUses?.forEach(v => {
-      const matcher = v.replace('var(', '').replace(')', '');
-      const value = variablesValues?.find(f => f.includes(matcher));
-      if ( value ){
-        const [_, styleValue] = value.split(':');
-        css = css.replace(v, styleValue);
-      }
-    })
-  }
-
-  return css;
-}
-
 export {
   formatArray,
   sortByCount,
   sortAlphabetically,
   filterNeutralKeyWords,
-  replaceCSSVariablesWithValue,
 }

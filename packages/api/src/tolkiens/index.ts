@@ -4,8 +4,6 @@ import extractCss from 'extract-css-core';
 import { parseColor } from './parsers/color/color'
 import { parseFont } from './parsers/font/font'
 import { buildDictionary } from './styleDictionary/build'
-import { replaceCSSVariablesWithValue } from './utils'
-
 
 type ParseProperties = {
   css: string,
@@ -16,7 +14,6 @@ function parseProperties ({ css }: ParseProperties) {
 
   // Colors
   const colorTokens = parseColor(properties)
-
   // Fonts
   const fontTokens = parseFont(properties)
 
@@ -26,8 +23,7 @@ function parseProperties ({ css }: ParseProperties) {
 async function fetchCode (url: string) {
   try {
     const extractedCSS = await extractCss(url);
-    const css = replaceCSSVariablesWithValue(extractedCSS);
-
+    const css = extractedCSS.replace(/var\((.*)\)/g, '');
     return parseProperties({ css })
   } catch (error) {
     console.error('fetchCode', error)

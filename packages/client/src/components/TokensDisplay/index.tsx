@@ -83,7 +83,7 @@ function TokensDisplay({ tokens }: Props) {
     <>
       {hasTokens && (
         <div className={`${styles.downloadButton} ${showContainer}`}>
-          <Button variation="secondary" text="Download Variations" onClick={handleDownload} />
+          <Button variation="tertiary" text="Download Variations" onClick={handleDownload} />
         </div>
       )}
       <div className={`${styles.container} ${showContainer}`}>

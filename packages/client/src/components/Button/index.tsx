@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 interface Props { 
   text: string;
   isLoading?: boolean;
-  variation?: 'primary' | 'secondary';
+  variation?: 'primary' | 'secondary' | 'tertiary';
   onClick?: () => void;
 }
 
