@@ -1,9 +1,9 @@
 import cssstats from 'cssstats'
-import extractCss from 'extract-css-core';
 
 import { parseColor } from './parsers/color/color'
 import { parseFont } from './parsers/font/font'
 import { buildDictionary } from './styleDictionary/build'
+import { extractCSS } from './utils'
 
 type ParseProperties = {
   css: string,
@@ -22,7 +22,7 @@ function parseProperties ({ css }: ParseProperties) {
 
 async function fetchCode (url: string) {
   try {
-    const extractedCSS = await extractCss(url);
+    const extractedCSS = await extractCSS(url);
     const css = extractedCSS.replace(/var\((.*)\)/g, '');
     return parseProperties({ css })
   } catch (error) {
