@@ -30,9 +30,28 @@ function formatArray(array: Array<string>) {
   return cleanedArrayUniqueCount
 }
 
+const replaceCSSVariablesWithValue = (css: string) => {
+  const variablesValues = css.match(/--(.*?):(.*?);/g);
+  const variablesUses = css.match(/var\((.*?)\)/g);
+
+  if(variablesUses && variablesValues && variablesValues.length > 0 && variablesUses.length > 0) {
+    variablesUses?.forEach(v => {
+      const matcher = v.replace('var(', '').replace(')', '');
+      const value = variablesValues?.find(f => f.includes(matcher));
+      if ( value ){
+        const [_, styleValue] = value.split(':');
+        css = css.replace(v, styleValue);
+      }
+    })
+  }
+
+  return css;
+}
+
 export {
   formatArray,
   sortByCount,
   sortAlphabetically,
   filterNeutralKeyWords,
+  replaceCSSVariablesWithValue,
 }
