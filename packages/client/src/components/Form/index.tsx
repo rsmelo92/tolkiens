@@ -3,7 +3,6 @@ import { FormEvent, useState } from 'react'
 import Input from '../Input'
 import Button from '../Button'
 import Steps from '../Steps'
-import Modal from '../Modal'
 import TokensDisplay from '../TokensDisplay'
 
 import styles from './styles.module.css'
@@ -17,7 +16,6 @@ interface Event {
 function Form() {
   const [value, setValue] = useState<string>()
   const [loading, setLoading] = useState<boolean>(false)
-  const [opened, setOpened] = useState<boolean>(false)
   const [tokens, setTokens] = useState([])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -55,8 +53,6 @@ function Form() {
         <TokensDisplay tokens={tokens} />
         <Steps />
       </form>
-
-      <Modal open={opened} onClose={() => {setOpened(false)}} />
     </section>
   )
 }

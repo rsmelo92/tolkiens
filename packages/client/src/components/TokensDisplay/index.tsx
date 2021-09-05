@@ -1,6 +1,9 @@
+import { useState } from 'react'
+
 import Colors from './Items/Colors'
 import Fonts from './Items/Fonts'
 import Button from '../Button'
+import Modal from '../Modal'
 
 import styles from './styles.module.css';
 
@@ -62,6 +65,8 @@ interface Props {
 }
 
 function TokensDisplay({ tokens }: Props) {
+  const [opened, setOpened] = useState<boolean>(false)
+
   const fonts = tokens.map(t => t.font).filter(Boolean);
   const colors = tokens.map(t => t.color).filter(Boolean);
   const hasTokens = tokens && tokens.length > 0;
@@ -71,6 +76,7 @@ function TokensDisplay({ tokens }: Props) {
     const stringifiedTokens = JSON.stringify(tokens);
     const tokensEncoded = btoa(stringifiedTokens);
     window.location.assign(`/download?tokens=${tokensEncoded}`)
+    setOpened(true);
   }
 
   return (
@@ -84,6 +90,7 @@ function TokensDisplay({ tokens }: Props) {
         {colors.map(c => <Colors item={c} />)}
         {fonts.map(f => <Fonts item={f} />)}
       </div>
+      <Modal open={opened} onClose={() => {setOpened(false)}} />
     </>
   )
 }
