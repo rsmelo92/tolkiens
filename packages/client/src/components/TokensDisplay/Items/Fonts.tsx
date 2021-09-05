@@ -131,24 +131,24 @@ function LineHeight({ lineHeight }: LineHeightType) {
         style={{ lineHeight: large?.value }}
         item={large}
         title="large"
-        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita." />
+        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita." />
       <Item
         style={{ lineHeight: medium?.value }}
         item={medium}
         title="medium"
-        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita."
+        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita."
       />
       <Item
         style={{ lineHeight: small?.value }}
         item={small}
         title="small"
-        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita."
+        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita."
       />
       <Item
         style={{ lineHeight: reset?.value }}
         item={reset}
         title="reset"
-        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita."
+        example="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut harum officia nesciunt obcaecati repellat minus architecto tenetur eum animi distinctio quos pariatur, modi hic accusantium recusandae optio sit inventore expedita."
       />
     </div>
   );

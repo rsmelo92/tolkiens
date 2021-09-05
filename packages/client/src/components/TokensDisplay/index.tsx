@@ -1,6 +1,8 @@
 import Colors from './Items/Colors'
 import Fonts from './Items/Fonts'
 
+import styles from './styles.module.css';
+
 export type InnerColor = {
   '00': { value: string };
   '01': { value: string };
@@ -59,12 +61,12 @@ interface Props {
 }
 
 function TokensDisplay({ tokens }: Props) {
-
   const fonts = tokens.map(t => t.font).filter(Boolean);
   const colors = tokens.map(t => t.color).filter(Boolean);
+  const showContainer = tokens && tokens.length > 0 ? styles.containerShow : '';
 
   return (
-    <div>
+    <div className={`${styles.container} ${showContainer}`}>
       {colors.map(c => <Colors item={c} />)}
       {fonts.map(f => <Fonts item={f} />)}
     </div>

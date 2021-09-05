@@ -31,7 +31,7 @@ function Form() {
         .then(res => {
           setTokens(res)
         })
-        .catch(err => console.error)
+        .catch(console.error)
         .finally(() => {
           setLoading(false)
         })
@@ -52,10 +52,7 @@ function Form() {
           </div>
         </div>
 
-      {tokens && (
         <TokensDisplay tokens={tokens} />
-      )}
-
         <Steps />
       </form>
 

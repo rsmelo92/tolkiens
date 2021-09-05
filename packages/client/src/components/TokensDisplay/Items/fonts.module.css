@@ -3,11 +3,9 @@
 }
 
 .itemsSizeWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
 }
 
 .itemsWrapper {
@@ -18,5 +16,13 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .title {
+    margin-left: 20px;
+  }
 
+  .itemsSizeWrapper {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr;
+  }
 }

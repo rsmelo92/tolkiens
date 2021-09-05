@@ -23,11 +23,11 @@
 
 @media only screen and (max-width: 600px) {
   .color {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
   
   .colorName {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
