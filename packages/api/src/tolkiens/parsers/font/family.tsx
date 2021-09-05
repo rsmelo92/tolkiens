@@ -12,5 +12,4 @@ function parseFontFamily(array: Array<string>) {
   }
 }
 
-
 export { parseFontFamily }
