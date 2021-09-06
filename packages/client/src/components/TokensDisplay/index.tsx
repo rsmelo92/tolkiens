@@ -23,7 +23,7 @@ export type InnerFont = {
     "reset": { "value": string },
   };
   family: { 
-    "default"?: { "value": string},
+    "main"?: { "value": string},
     "alternative"?: { "value": string},
   };
   weight: {
@@ -67,9 +67,13 @@ interface Props {
 function TokensDisplay({ tokens }: Props) {
   const [opened, setOpened] = useState<boolean>(false)
 
+  const hasTokens = tokens && tokens.length > 0;
+  if (!hasTokens) {
+    return null;
+  }
+
   const fonts = tokens.map(t => t.font).filter(Boolean);
   const colors = tokens.map(t => t.color).filter(Boolean);
-  const hasTokens = tokens && tokens.length > 0;
   const showContainer = hasTokens ? styles.containerShow : '';
 
   const handleDownload = () => {
@@ -81,11 +85,9 @@ function TokensDisplay({ tokens }: Props) {
 
   return (
     <>
-      {hasTokens && (
-        <div className={`${styles.downloadButton} ${showContainer}`}>
-          <Button variation="tertiary" text="Download Variations" onClick={handleDownload} />
-        </div>
-      )}
+      <div className={`${styles.downloadButton} ${showContainer}`}>
+        <Button variation="tertiary" text="Download Variations" onClick={handleDownload} />
+      </div>
       <div className={`${styles.container} ${showContainer}`}>
         {colors.map(c => <Colors item={c} />)}
         {fonts.map(f => <Fonts item={f} />)}

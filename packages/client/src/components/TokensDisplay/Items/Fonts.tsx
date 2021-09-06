@@ -9,13 +9,13 @@ type FamilyType = {
 }
 
 function Family({ family }: FamilyType) {
-  const { default: main, alternative } = family;
+  const { main, alternative } = family;
   return (
     <div>
       <Item
         style={{ fontFamily: main?.value }}
         item={main}
-        title="Default"
+        title="Main"
       />
       <Item
         style={{ fontFamily: alternative?.value }}

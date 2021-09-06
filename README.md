@@ -13,5 +13,11 @@ TODO
 - [x] Fetch using headless browser
 - [ ] Add route security
 - [ ] Dont generate files, only use memory
-- [ ] Add tests
 - [ ] Add captcha (?)
+
+BEFORE OPEN SOURCE
+
+- [ ] Add tests
+- [ ] Organize types
+- [ ] Organize code
+- [ ] Improve `yarn dev:watch`

@@ -16,7 +16,7 @@ const hasNeutralDistance = (color: string) => {
   return total >= NEUTRAL_MIN_DISTANCE
 }
 
-function getScalePallete(color: string, key: string = 'primary') {
+function getScalePallete(color: string) {
   const palleteLight = chroma.scale([color, 'ffffff']).colors(4)
   const palleteDark = chroma.scale([color, '000000']).colors(4)
   return {
