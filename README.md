@@ -1,5 +1,10 @@
 # tolkiens
 
+## What is this
+
+Given a website url, take all the css and produce design-tokens from it
+
+
 MVP:
 - [x] Typography
 - [x] Colors
